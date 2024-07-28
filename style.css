@@ -59,3 +59,102 @@
 .checkboxWrapper input:checked + .checkbox:after {
   background-color: inherit;
 }
+
+.task {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.task:last-child {
+  margin-bottom: 0;
+}
+
+.openTask {
+  overflow: hidden;
+  animation: openTask 1s ease forwards;
+}
+
+.closeTask {
+  overflow: hidden;
+  animation: closeTask 1s ease forwards;
+}
+
+.smoothOpen {
+  animation: smoothOpen 0.5s ease forwards;
+}
+
+.smoothClose {
+  animation: smoothClose 0.5s ease forwards;
+}
+
+.openError {
+  animation: openError 1s ease forwards;
+}
+
+.closeError {
+  animation: closeError 1s ease forwards;
+}
+
+@keyframes smoothOpen {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes smoothClose {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes openTask {
+  0% {
+    margin-bottom: 0;
+    max-height: 0;
+  }
+  
+  100% {
+    margin-bottom: 16px;
+    max-height: 100px;
+  }
+}
+
+@keyframes closeTask {
+  0% {
+    margin-bottom: 16px;
+    max-height: 100px;
+  }
+  
+  100% {
+    margin-bottom: 0;
+    max-height: 0;
+  }
+}
+
+@keyframes openError {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeError {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
