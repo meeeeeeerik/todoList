@@ -11,22 +11,40 @@
   <div class="container md:max-w-md mx-auto px-5 pt-14 pb-16">
     <h1 class="text-center text-2xl font-bold text-blue-600 mb-12">Мои задачи</h1>
     <h2 class="text-center text-lg mb-10">Регистрация</h2>
-    <div class="text-cneter font-semibold">
-      Письмо с подтверждением отправлено на почту
+    
+    <div id="registrationContainer">
+      <form id="registrationForm">
+        <label for="email" class="text-zinc-500 block mb-2 ml-2">Email</label>
+        <input
+          id="email"
+          type="email"
+          class="w-full h-10 rounded-lg px-4 border mb-4"
+          required
+        />
+        <label for="password" class="text-zinc-500 block mb-1 ml-2">Пароль</label>
+        <input
+          id="password"
+          type="password"
+          class="w-full h-10 rounded-lg px-4 border mb-2"
+          pattern="^.{6,}"
+          required
+          title="Должно быть не меньше 6 символов!"
+        />
+        <label for="confirmPassword" class="text-zinc-500 block mb-1 ml-2">Повторите пароль</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          class="w-full h-10 rounded-lg px-4 border mb-8"
+          required
+          title="Должно быть не меньше 6 символов!"
+        />
+        <button id="registerButton" class="button button-green mx-auto mb-2">Зарегистрироваться</button>
+        <div class="text-center text-zinc-500">Уже есть аккаунта? <a href="./login.html" class="underline hover:text-blue-600">Войти</a>
+        </div>
+      </form>
     </div>
-
-    <!-- <label for="email" class="text-zinc-500 block mb-2 ml-2">Email</label>
-    <input id="email" type="email" class="w-full h-10 rounded-lg px-4 border mb-4">
-
-    <label for="password" class="text-zinc-500 block mb-1 ml-2">Пароль</label>
-    <input id="password" type="password" class="w-full h-10 rounded-lg px-4 border mb-2">
-
-    <label for="confirmPassword" class="text-zinc-500 block mb-1 ml-2">Повторите пароль</label>
-    <input id="confirmPassword" type="password" class="w-full h-10 rounded-lg px-4 border mb-8">
-
-    <button class="button button-green mx-auto mb-2">Зарегистрироваться</button>
-
-    <div class="text-center text-zinc-500">Уже есть аккаунта? <a href="./login.html" class="underline hover:text-blue-600">Войти</a></div> -->
   </div>
+
+  <script type="module" src="./registration.js"></script>
 </body>
 </html>

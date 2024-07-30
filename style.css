@@ -5,6 +5,7 @@
 .button {
   @apply block h-10 rounded-lg w-max px-6 bg-white text-blue-600 font-medium hover:opacity-70
 }
+
 .button-green {
   @apply bg-green-500 text-white;
 }
@@ -13,6 +14,14 @@
 }
 .button-gray {
   @apply bg-gray-500 text-white;
+}
+
+.button:disabled {
+  @apply pointer-events-none bg-gray-300;
+}
+
+.error {
+  @apply border-red-700;
 }
 
 /* .checkboxWrapper {
