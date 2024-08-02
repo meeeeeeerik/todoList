@@ -8,10 +8,13 @@
     <title>Мои Задачи</title>
   </head>
   <body>
+    <div id="loader" class="fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-30 z-10 flex justify-center items-center backdrop-blur-sm">
+      <div class="custom-loader"></div>
+    </div>
     <!-- HEADER STARTS -->
     <header class="bg-blue-600">
       <div class="container mx-auto h-16 flex justify-between items-center">
-        <div class="text-white">test@mail.com</div>
+        <div id="user" class="text-white"></div>
         <button class="button">Выход</button>
       </div>
     </header>
@@ -25,8 +28,7 @@
       <div class="border border-blue-600 rounded-lg p-3 mb-4">
         <h2 class="text-lg font-bold text-blue-600 border-b-2 pb-2">Текущие задачи</h2>
 
-        <div  id="tasksContainer" class="py-4 flex flex-col">
-          <!-- <div class="text-zinc-500">Нет задач</div> -->
+        <div id="tasksContainer" class="py-4 flex flex-col">
           <!-- <div class="task">
             <label class="checkboxWrapper">
                <input type="checkbox" />

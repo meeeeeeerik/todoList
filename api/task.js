@@ -1,6 +1,6 @@
 import { supabase } from './config';
 
-export async function getTasks(email, password) {
+export async function getTasks() {
   let { data, error } = await supabase.from('tasks').select('*');
 
   if (error) {
