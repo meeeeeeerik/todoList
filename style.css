@@ -126,12 +126,10 @@
 
 @keyframes openTask {
   0% {
-    margin-bottom: 0;
     max-height: 0;
   }
   
   100% {
-    margin-bottom: 16px;
     max-height: 100px;
   }
 }

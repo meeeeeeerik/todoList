@@ -27,7 +27,7 @@ export async function getTask(taskId) {
 
 export async function createTask(taskData) {
  
-  const { data, error } = await supabase.from('tasks').insert(taskData).select();
+  const { data, error } = await supabase.from('tasks').insert(taskData).select().single();
         
 
   if (error) {
