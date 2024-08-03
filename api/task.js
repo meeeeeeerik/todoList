@@ -42,8 +42,8 @@ export async function updateTask(taskData) {
   .from('tasks')
   .update(taskData)
   .eq('id', taskData.id)
-  .select();
-        
+  .select()
+  .single();
 
   if (error) {
     throw Error(error?.message || 'Что то случилось при обнавлении  задачи');

@@ -65,6 +65,10 @@
   background: #fff;
 }
 
+.checkboxWrapper {
+  @apply h-max;
+}
+
 .checkboxWrapper input:checked + .checkbox:after {
   background-color: inherit;
 }

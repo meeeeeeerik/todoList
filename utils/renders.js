@@ -25,8 +25,6 @@ export function renderTasks(tasks) {
 
 }
 
-
-
 export function renderNewTask(task) {
   const tasksContainer = document.querySelector('#tasksContainer');
   const tasks = tasksContainer.querySelectorAll('.task');
@@ -37,4 +35,12 @@ export function renderNewTask(task) {
   } else {
     tasksContainer.innerHTML = newTask;
   }
+}
+
+export function renderUpdatedTask(task) {
+  const taskContainer = document.querySelector(`[data-taskContainerId="${task.id}"]`);
+
+  taskContainer.insertAdjacentHTML('afterend', createTaskHtml(task));
+
+  taskContainer.remove();
 }
