@@ -1,42 +1,66 @@
-import { getTasks } from './api/task';
+import { getActiveTasks, getArchiveTasks } from './api/task';
 import { getUser } from './api/user';
-import { renderTasks, renderTasksLoader, renderUser } from './utils/renders';
+import {
+    renderActiveTasks,
+    renderActiveTasksLoader,
+    renderArchiveTasks,
+    renderArchiveTasksLoader,
+    renderUser,
+} from './utils/renders';
 import { openTaskModal } from './utils/taskModalHandlers';
-import { onTasksContainerClick } from './utils/tasksContainerHandlers';
+import { onActiveTasksContainerClick, onArchiveTasksContainerClick, } from './utils/tasksContainerHandlers';
 
 function removeUserLoader() {
   const loader = document.querySelector('#loader');
 
-  if (loader) { loader.remove(); }
+  if (loader) {
+      loader.remove();
+  }
+}
+
+async function getAndRenderActiveTasks() {
+    renderActiveTasksLoader();
+
+    const activeTasks = await getActiveTasks();
+
+    renderActiveTasks(activeTasks);
+}
+
+async function getAndRenderArchiveTasks() {
+    renderArchiveTasksLoader();
+
+    const archiveTasks = await getArchiveTasks();
+
+    renderArchiveTasks(archiveTasks);
 }
 
 async function start() {
-  try {
-    const user = await getUser();  
+    try {
+        const user = await getUser();
 
-    if (!user) {
-      window.location.href = '/auth/login.html';
+        if (!user) {
+            window.location.href = '/auth/login.html';
+        }
+
+        renderUser(user);
+
+        removeUserLoader();
+
+        await getAndRenderActiveTasks();
+
+        await getAndRenderArchiveTasks();
+
+        const addTaskButton = document.querySelector('#addTaskButton');
+        addTaskButton.addEventListener('click', () => openTaskModal());
+
+        const activeTasksContainer = document.querySelector('#tasksContainer');
+        activeTasksContainer.addEventListener('click', onActiveTasksContainerClick);
+
+        const archiveTasksContainer = document.querySelector('#archiveTasksContainer');
+        archiveTasksContainer.addEventListener('click', onArchiveTasksContainerClick);
+    } catch (error) {
+        console.log('error', error);
     }
-
-    renderUser(user);
-
-    removeUserLoader();
-
-    renderTasksLoader();
-
-    const tasks = await getTasks();
-
-    renderTasks(tasks);
-
-    const addTaskButton = document.querySelector('#addTaskButton');
-    addTaskButton.addEventListener('click', () => openTaskModal());
-
-    const tasksContainer = document.querySelector('#tasksContainer');
-    tasksContainer.addEventListener('click', onTasksContainerClick);
-
-  } catch (error) {
-    console.log('error', error);
-  }
 }
 
 start();

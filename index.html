@@ -1,35 +1,46 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Мои Задачи</title>
-  </head>
-  <body>
-    <div id="loader" class="fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-30 z-10 flex justify-center items-center backdrop-blur-sm">
-      <div class="custom-loader"></div>
-    </div>
-    <!-- HEADER STARTS -->
-    <header class="bg-blue-600">
-      <div class="container mx-auto h-16 flex justify-between items-center">
-        <div id="user" class="text-white"></div>
-        <button class="button">Выход</button>
-      </div>
-    </header>
-    <!-- HEADER ENDS -->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Мои Задачи</title>
+    </head>
+    <body>
+        <div
+            id="loader"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-30 z-10 flex justify-center items-center backdrop-blur-sm"
+        >
+            <div class="custom-loader"></div>
+        </div>
+        <!-- HEADER STARTS -->
+        <header class="bg-blue-600">
+            <div
+                class="container mx-auto h-16 flex justify-between items-center"
+            >
+                <div id="user" class="text-white"></div>
+                <button class="button">Выход</button>
+            </div>
+        </header>
+        <!-- HEADER ENDS -->
 
-    <div class="container md:max-w-3xl mx-auto px-5 pt-6 pb-16">
-      <h1 class="text-center text-2xl font-bold text-blue-600 mb-12">Мои задачи</h1>
-      <button class="button button-green mb-6" id="addTaskButton">Добавить задачу</button>
+        <div class="container md:max-w-3xl mx-auto px-5 pt-6 pb-16">
+            <h1 class="text-center text-2xl font-bold text-blue-600 mb-12">
+                Мои задачи
+            </h1>
+            <button class="button button-green mb-6" id="addTaskButton">
+                Добавить задачу
+            </button>
 
-      <!-- CURRENT TASKS STARTS -->
-      <div class="border border-blue-600 rounded-lg p-3 mb-4">
-        <h2 class="text-lg font-bold text-blue-600 border-b-2 pb-2">Текущие задачи</h2>
+            <!-- CURRENT TASKS STARTS -->
+            <div class="border border-blue-600 rounded-lg p-3 mb-4">
+                <h2 class="text-lg font-bold text-blue-600 border-b-2 pb-2">
+                    Текущие задачи
+                </h2>
 
-        <div id="tasksContainer" class="py-4 flex flex-col">
-          <!-- <div class="task">
+                <div id="tasksContainer" class="py-4 flex flex-col">
+                    <!-- <div class="task">
             <label class="checkboxWrapper">
                <input type="checkbox" />
                <div class="checkbox red"></div>
@@ -40,18 +51,22 @@
               <div class="text-sm text-zinc-500 line-clamp-3">Сходить в магаз через дорогу</div>
             </div>
           </div> -->
-        </div>
-      </div>
-      <!-- CURRENT TASKS ENDS -->
+                </div>
+            </div>
+            <!-- CURRENT TASKS ENDS -->
 
-      
-      <!-- ARCHIV TASKS STARTS -->
-      <div class="border border-blue-600 rounded-lg p-3">
-        <h2 class="text-lg font-bold text-blue-600 border-b-2 pb-2">Архив</h2>
+            <!-- ARCHIV TASKS STARTS -->
+            <div class="border border-blue-600 rounded-lg p-3">
+                <h2 class="text-lg font-bold text-blue-600 border-b-2 pb-2">
+                    Архив
+                </h2>
 
-        <div class="py-4 flex flex-col gap-4">
-          <div class="text-zinc-500">Нет задач</div>
-          <!-- <div class="flex">
+                <div
+                    class="py-4 flex flex-col gap-4"
+                    id="archiveTasksContainer"
+                >
+                    <div class="text-zinc-500">Нет задач</div>
+                    <!-- <div class="flex">
             <label class="checkboxWrapper">
                <input type="checkbox" />
                <div class="checkbox red"></div>
@@ -68,13 +83,12 @@
               <button class="button button-red">Удалить</button>
             </div>
           </div> -->
-        </div>
-      </div>
-      <!-- ARCHIV TASKS ENDS -->
+                </div>
+            </div>
+            <!-- ARCHIV TASKS ENDS -->
 
-      
-       <!-- MODAL ASKING STARTS -->
-       <!-- <div class="bg-black backdrop-blur-sm bg-opacity-30 fixed top-0 right-0 bottom-0 left-0 flex justify-center items-center">
+            <!-- MODAL ASKING STARTS -->
+            <!-- <div class="bg-black backdrop-blur-sm bg-opacity-30 fixed top-0 right-0 bottom-0 left-0 flex justify-center items-center">
         <div class="w-full max-w-md bg-white p-8 rounded-lg max-h-full">
           <h2 class="text-lg font-bold mb-6 text-center">Вы уверены, что хотите удалить?</h2>
           <div class="flex justify-between">
@@ -83,11 +97,10 @@
           </div>
        </div>
       </div> -->
-      <!-- MODAL ASKING ENDS -->
+            <!-- MODAL ASKING ENDS -->
 
-      
-      <!-- MODAL ERROR STARTS -->
-      <!-- <div class="fixed right-0 bottom-0 left-0 flex justify-center pb-10 px-5">
+            <!-- MODAL ERROR STARTS -->
+            <!-- <div class="fixed right-0 bottom-0 left-0 flex justify-center pb-10 px-5">
         <div class="mx-w-xs flex justify-center items-center bg-red-700 rounded-lg text-white py-3 pl-5 pr-10 relative">
           <span class="line-clamp-5">Что-то случилось</span>
           <div class="absolute top-3 right-3 w-6 h-6 cursor-pointer hover:opacity-70">
@@ -97,9 +110,9 @@
           </div>
         </div>
       </div> -->
-      <!-- MODAL ERROR ENDS -->
-    </div>
+            <!-- MODAL ERROR ENDS -->
+        </div>
 
-    <script type="module" src="/main.js"></script>
-  </body>
+        <script type="module" src="/main.js"></script>
+    </body>
 </html>

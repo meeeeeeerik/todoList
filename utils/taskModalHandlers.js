@@ -3,6 +3,33 @@ import { modes } from "./constanst";
 import { createTaskModalHtml } from "./htmlTemplates";
 import { renderNewTask, renderUpdatedTask } from './renders';
 
+export function onTaskModalContainerClick(event) {
+  if (event.target.id === 'taskModalContainer') {
+    closeTaskModal();
+  }
+};
+
+export function closeTaskModal() {
+  const taskModalContainer = document.querySelector('#taskModalContainer');
+  const closeTaskModalButton = document.querySelector('#closeTaskModalButton');
+
+  return new Promise((res) => {
+    taskModalContainer.classList.add('smoothClose');
+
+    const onAnimationEnd = () => {
+      closeTaskModalButton.removeEventListener('click', closeTaskModal);
+      
+      taskModalContainer.removeEventListener('animationend', onAnimationEnd);
+      taskModalContainer.addEventListener('click', onTaskModalContainerClick);
+
+      taskModalContainer.remove();
+
+      res();
+    };
+    taskModalContainer.addEventListener('animationend', onAnimationEnd);
+  });
+}
+
 export function openTaskModal(mode = modes.create, taskId) {
   const taskModalHtml = createTaskModalHtml(mode);
 
@@ -12,30 +39,6 @@ export function openTaskModal(mode = modes.create, taskId) {
   const taskModal = document.querySelector('#taskModal');
   const closeTaskModalButton = document.querySelector('#closeTaskModalButton');
   const submitTaskModalFormButton = document.querySelector('#submitTaskModalFormButton');
-
-  const closeTaskModal = () => {
-    return new Promise((res) => {
-      taskModalContainer.classList.add('smoothClose');
-  
-      const onAnimationEnd = () => {
-        closeTaskModalButton.removeEventListener('click', closeTaskModal);
-        
-        taskModalContainer.removeEventListener('animationend', onAnimationEnd);
-        taskModalContainer.addEventListener('click', onTaskModalContainerClick);
-  
-        taskModalContainer.remove();
-
-        res();
-      };
-      taskModalContainer.addEventListener('animationend', onAnimationEnd);
-    });
-  };
-
-  const onTaskModalContainerClick = (event) => {
-    if (event.target.id === 'taskModalContainer') {
-      closeTaskModal();
-    }
-  };
 
   closeTaskModalButton.addEventListener('click', closeTaskModal);
 

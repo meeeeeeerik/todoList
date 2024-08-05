@@ -1,6 +1,6 @@
 export const modes = {
-  create: 'create',
-  edit: 'edit',
+    create: 'create',
+    edit: 'edit',
 };
 
 export const priorities = {
@@ -8,4 +8,9 @@ export const priorities = {
   medium: 'Средний',
   low: 'Низкий',
   empty: '',
-}
+};
+
+export const statuses = {
+    active: 'active',
+    archive: 'archive',
+};
